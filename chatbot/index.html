@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <script src = "/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        socket.on('message', ( message ) => {
+            console.log('Server Message: ', message );
+            const chatArea = document.getElementById('chat-messages');
+            const currentText = chatArea.innerHTML;
+            chatArea.innerHTML = `<br/> ${message} <br/> <br/> ${currentText}`;
+        });
+
+        const sendChat = () => {
+           const text = document.getElementById('userText').value;
+            socket.emit('chatMessage', text );
+            document.getElementById('userText').value = '';
+        };
+    </script>
+    <body>
+        <h1>Welcome to chat</h1>
+        <input id='userText' type="textarea" />
+        <button onclick="sendChat()">Send</button>
+
+        <div id="chat-messages"></div>
+    </body>
+</html>
