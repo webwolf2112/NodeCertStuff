@@ -14,12 +14,11 @@ const parentClose = () => {
 
 
 child.stdout.on('data', (data) => {
-    console.log( 'data 2');
-  console.log(`stdout: ${data}`);
-  parentFunction( data.toString() );
-  for( let i = 0; i < 10; i++) {
-    console.log( 'loopy loop');
-}
+    console.log(`stdout: ${data}`);
+    parentFunction( data.toString() );
+    for( let i = 0; i < 10; i++) {
+        console.log( 'loopy loop');
+    }
 });
 
 child.stderr.on('data', (data) => {
