@@ -23,6 +23,8 @@
     "parser": "^0.1.4"
   },
   "devDependencies": {
-    "jest": "^26.1.0"
+    "jest": "^26.1.0",
+    "parser": "^0.1.4",
+    "socket.io": "^2.3.0"
   }
 }
