@@ -1,15 +1,21 @@
 const hello = () => {
     let sayHi = 'hello world'
 
-    sayHi = 'yo';
-
-    sayHi = 'hello';
-    sayHi = 'wold';
-    sayHi = 'yasdf';
-    sayHi = 'hgf';
-    sayHi = 'sdfg';
-
-    console.log( process.argv[2] );
+    console.log( sayHi );
 };
 
-hello();
+const add = (a, b) => {
+    return a + b;
+}
+
+const promiseTest = () => {
+    return new Promise( (res, rej) => {
+        res('this worked')
+    });
+};
+
+module.exports = {
+    add,
+    promiseTest,
+    hello,
+ };
