@@ -4,18 +4,20 @@ const fs = require('fs');
 
 const url = "https://hipsum.co/api/?type=hipster-centric&sentences=10";
 
-const emit = new Emitter();
+const myevent = new Emitter();
 
-let parentData;
-
-
-emit.on('httpMessage', () => {
+myevent.on('httpMessage', () => {
     console.log( 'The file was written' );
     fs.readFile('apiFile.js', (err, data) => {
         if (err) throw err;
-        console.log(data.toString());
+        console.log('The file was read');
+        myevent.emit('end');
       });
 });
+
+myevent.on('end', () => {
+  console.log( 'That\'s all folks' );
+})
 
 
 
@@ -23,9 +25,8 @@ const getStuff = () => {
     https.get(url, (resp) => {
         let data = '';
       
-        // A chunk of data has been recieved.
         resp.on('data', (chunk) => {
-          data += chunk;
+          data += JSON.parse(chunk)[0];
         });
       
         // The whole response has been received. Print out the result.
@@ -35,14 +36,16 @@ const getStuff = () => {
                   console.log( 'An Error Occured writing that file');
               }
 
-              emit.emit('httpMessage');
+              myevent.emit('httpMessage');
 
 
           });
         });
+
+        resp.on('error', () => {
+          console.log("Error: " + err.message);
+        })
       
-      }).on("error", (err) => {
-        console.log("Error: " + err.message);
       });
 };
 

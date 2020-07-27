@@ -19,10 +19,6 @@ const readFile = async() => {
     console.log( url );
     let fileText = '';
 
-    // fs.readFile(url, (err, data) => {
-    //     if( err ) throw new Error( err );
-    //     // console.log( data.toString() );
-    // });
     const stream = fs.createReadStream(url);
         stream.on('data', (chunk) => { fileText += chunk});
         stream.on('end', () => {

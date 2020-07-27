@@ -4,9 +4,14 @@ const path = require('path');
 const  { exec }  = require('child_process');
 
 const mkdir = exec('mkdir hello' , function(err, strdout, stderr){
-    if(err) console.log("Folder creation err:" + err);
+    if(err) {
+        console.log("Folder creation err:" + err);
+    } 
+
     const touch = exec('cd hello/; echo "hello sunshine" >  hello2.js', function(err, strdout, stderr){
-        if( err) console.log( "File creation error" + err)
+        if( err) {
+            console.log( "File creation error" + err)
+        }
         console.log( 'file was created');
     });
 

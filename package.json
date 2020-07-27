@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/webwolf2112/NodeCertStuff#readme",
   "dependencies": {
+    "async": "^3.2.0",
     "body": "^5.1.0",
     "express": "^4.17.1",
     "parser": "^0.1.4"
