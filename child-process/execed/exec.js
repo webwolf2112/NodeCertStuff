@@ -1,12 +1,19 @@
 const { exec } = require('child_process');
 
-const child = exec('testfile.js', ['hello'], (error, stdout, stderr) => {
+// //good for command line stuff
+
+exec('ls', (error, stdout, stderr) => {
     if( error ) {
         console.warn('error ', error);
     }
 
-    console.log(`stdout: ${stdout}`);
-    console.error(`stderr: ${stderr}`);
+    if( stdout ) {
+        console.log(`stdout: ${stdout}`);
+    }
+
+    if( stderr ) {
+        console.error(`stderr: ${stderr}`);
+    }
 });
 
 
