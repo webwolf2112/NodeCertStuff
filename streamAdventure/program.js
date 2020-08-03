@@ -1,26 +1,19 @@
-// Your program will get some html written to stdin. Convert all the inner html to
-//      upper-case for elements with a class name of "loud",
-//      and pipe all the html to stdout.
+const duplex2 = require('duplex2');
+const throughObjectMode = require('through2').obj   //**Important Remember this */
 
-const through2 = require('through2');
-const trumpet = require('trumpet');
-const tr = trumpet();
+module.exports = function( counter ){
+     const counts = {}
+     function write (row, _, next) {
+          counts[row.country] = (counts[row.country] || 0) + 1
+          next()
+        }
+        function end (done) {
+          counter.setCounts(counts)
+          done()
+        }
 
-const loud = tr.select('.loud').createStream();
+     const input = through(write, end);
+     return duplexer({ objectMode: true }, input, counter)
 
+};
 
-loud.pipe(through2(function(chunk, enc, callback){
-    this.push(chunk.toString().toUpperCase());
-  callback();
-})).pipe(loud);
-
-
-process.stdin.pipe(tr).pipe(process.stdout);
-
-
-
-
-
-
-// cd  /Users/vanessahenson/.nvm/versions/node/v14.4.0/lib/node_modules/stream-ad
-//  venture/problems/html_stream/solution.js
