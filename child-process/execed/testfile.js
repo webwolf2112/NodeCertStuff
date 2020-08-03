@@ -1,1 +1,0 @@
-console.log( 'the args are', process.argv[2]);

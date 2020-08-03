@@ -3,12 +3,12 @@ const path = require('path');
 
 const  { exec }  = require('child_process');
 
-const mkdir = exec('mkdir hello' , function(err, strdout, stderr){
+const mkdir = exec('mkdir dynamicDirectory' , function(err, strdout, stderr){
     if(err) {
         console.log("Folder creation err:" + err);
     } 
 
-    const touch = exec('cd hello/; echo "hello sunshine" >  hello2.js', function(err, strdout, stderr){
+    const touch = exec('cd dynamicDirectory/; echo "hello sunshine" >  hello2.js', function(err, strdout, stderr){
         if( err) {
             console.log( "File creation error" + err)
         }

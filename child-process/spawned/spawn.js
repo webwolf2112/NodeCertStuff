@@ -21,4 +21,3 @@ const parentFunctionOutsideOfTheChildProcess = (data) => {
     console.log( 'The parent says: ', data );
 };
 
-
