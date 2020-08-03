@@ -1,17 +1,26 @@
-const split2 = require('split2'); //library to split into new lines
-const through = require('through2');
+// Your program will get some html written to stdin. Convert all the inner html to
+//      upper-case for elements with a class name of "loud",
+//      and pipe all the html to stdout.
 
-let lineCount = 0
-const tr = through(function (buf, _, next) {
-  const line = buf.toString()
-  this.push(lineCount % 2 === 0
-    ? line.toLowerCase() + '\n'
-    : line.toUpperCase() + '\n'
-  )
-  lineCount++
-  next()
-})
-process.stdin
-  .pipe(split2())
-  .pipe(tr)
-  .pipe(process.stdout)
+const through2 = require('through2');
+const trumpet = require('trumpet');
+const tr = trumpet();
+
+const loud = tr.select('.loud').createStream();
+
+
+loud.pipe(through2(function(chunk, enc, callback){
+    this.push(chunk.toString().toUpperCase());
+  callback();
+})).pipe(loud);
+
+
+process.stdin.pipe(tr).pipe(process.stdout);
+
+
+
+
+
+
+// cd  /Users/vanessahenson/.nvm/versions/node/v14.4.0/lib/node_modules/stream-ad
+//  venture/problems/html_stream/solution.js
