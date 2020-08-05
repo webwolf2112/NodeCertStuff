@@ -18,10 +18,10 @@ app.use((error, req, res, next) => {
     next();
    })
  
-// app.post('/', function (req, res) {
-//     setTimeout(()=>{
-//         res.send('This Posted');
-//     }, 400);
-//   })
+app.post('/', function (req, res) {
+    setTimeout(()=>{
+        res.send('This Posted');
+    }, 400);
+  })
 
 app.listen(5000)

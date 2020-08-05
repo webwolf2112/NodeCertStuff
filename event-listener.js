@@ -1,18 +1,5 @@
-// const EventEmitter = require('events');
-// const myEmitter = new EventEmitter();
-
-// myEmitter.on('event', () => {
-//   console.log('an event occurred!');
-// });
-
-// myEmitter.on('yomama', () => {
-//     console.log('Yo mama is so smart she\'s a node certified developer');
-// });
-// myEmitter.emit('event');
-// myEmitter.emit('yomama');
 const EventEmitter = require('events');
 const fs = require('fs');
-
 
 const myEvent = new EventEmitter();
 
