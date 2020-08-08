@@ -17,7 +17,7 @@ const filePath = process.argv[3];
 const server = http.createServer((req, res) => {
     const stream = fs.createReadStream(filePath);
 
-    fs.createReadStream(filePath).pipe(res)
+    fs.createReadStream(filePath).pipe(res) //piping the read stream to the response. the res is a stream
 } );
 
 server.listen(port);

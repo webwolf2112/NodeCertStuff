@@ -17,7 +17,7 @@ const readFile = (callback) => {
         if( err ){
             console.log( err );
         }
-        callback(null, data.toString());
+        callback(null, data.toString()); //It's the async library so pass in null
     });
 };
 

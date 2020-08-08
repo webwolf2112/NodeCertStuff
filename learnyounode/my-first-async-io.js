@@ -11,6 +11,5 @@ const fs = require('fs');
 fs.readFile( process.argv, 'utf8', (err, data) => {
     if (err) throw err;
 
-    console.log( data );
     console.log(data.split('\n').length - 1 );
   });

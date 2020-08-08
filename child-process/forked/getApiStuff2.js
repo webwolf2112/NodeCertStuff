@@ -17,7 +17,7 @@ https.get( process.argv[2], (res) => {
 });
 
 process.on('message', (data) => {
-    console.log( 'inside the child ', data);
+    console.log( 'event triggered from the process.send giving the data to the parent file ', data);
 });
 
 
