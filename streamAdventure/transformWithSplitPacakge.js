@@ -4,6 +4,7 @@ const through = require('through2');
 let lineCount = 0
 const tr = through(function (buf, _, next) {
   const line = buf.toString()
+  //this.push means you are pushing it to the stream!!
   this.push(lineCount % 2 === 0
     ? line.toLowerCase() + '\n'
     : line.toUpperCase() + '\n'

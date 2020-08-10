@@ -1,5 +1,5 @@
 const Eimtter = require('events');
-const Emitter = require('./vanilla-eimtter');
+// const Emitter = require('./vanilla-eimtter');
 const https = require('https');
 const fs = require('fs');
 
